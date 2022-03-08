@@ -26,10 +26,10 @@ namespace MarsQA_1.Pages
             Driver.driver.FindElement(By.XPath("//A[@class='item'][text()='Sign In']")).Click();
 
             //Enter Username
-            Driver.driver.FindElement(By.XPath("(//INPUT[@type='text'])[2]")).SendKeys("");
+            Driver.driver.FindElement(By.XPath("(//INPUT[@type='text'])[2]")).SendKeys("reemarobin1993@gmail.com");
 
             //Enter password
-            Driver.driver.FindElement(By.XPath("//INPUT[@type='password']")).SendKeys("");
+            Driver.driver.FindElement(By.XPath("//INPUT[@type='password']")).SendKeys("Marsproject143@");
 
             //Click on Login Button
             Driver.driver.FindElement(By.XPath("//BUTTON[@class='fluid ui teal button'][text()='Login']")).Click();

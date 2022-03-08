@@ -1,8 +1,9 @@
 ﻿Feature: Login
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+	As a seller I want to login to the skillswap website
 
 @mytag
-Scenario: Login to website
-	Given I login to the website
+Scenario Outline: I Login to the Skillswap website with valid credentials
+	Given I logged in to the skillswap website using my '<Email>' and '<Password>' successfully
+	Examples: 
+	| Email                    | Password        |
+	| reemarobin1993@gmail.com | Marsproject143@ |
