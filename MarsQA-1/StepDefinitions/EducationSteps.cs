@@ -13,7 +13,7 @@ namespace MarsQA_1.StepDefinitions
     [Binding]
     public class EducationSteps : Driver
     {
-        Education addEducationObj = new Education();
+       
         [Given(@"Navigate to Education tab")]
         public void GivenNavigateToEducationTab()
         {
@@ -24,22 +24,15 @@ namespace MarsQA_1.StepDefinitions
         [When(@"I add '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' to Education tab")]
         public void WhenIAddAndAndAndAndToEducationTab(string Country, string University, string Title, string Degree, string Year)
         {
+            Education addEducationObj = new Education();
             addEducationObj.AddEducation(driver, Country, University, Title, Degree, Year);
         }
         
         [Then(@"The '(.*)' and '(.*)' and '(.*)' and '(.*)' and '(.*)' should be created successfully\.")]
-        public void ThenTheAndAndAndAndShouldBeCreatedSuccessfully_(string Country, string University, string Title, string Degree, string Year)
+        public void ThenTheAndAndAndAndShouldBeCreatedSuccessfully_(string Country, string University, string Title, string Degree, int Year)
         {
-            string ActualCountry = addEducationObj.GetCountry(driver);
-            string ActualUniversity = addEducationObj.GetUniversity(driver);
-            string ActualTitle = addEducationObj.GetTitle(driver);
-            string ActualDegree = addEducationObj.GetDegree(driver);
-            string ActualYear = addEducationObj.GetYear(driver);
-            Assert.That(ActualCountry == Country, "Actual country and Expected country match");
-            Assert.That(ActualUniversity == University, "Actual name and Expected name match");
-            Assert.That(ActualTitle == Title, "Actual title and Expected title match");
-            Assert.That(ActualDegree == Degree, "Actual degree and Expected degree match");
-            Assert.That(ActualYear == Year, "Actual year and Expected year match");
+            Education addEducationObj = new Education();
+            addEducationObj.VerifyEducationAdded(Degree);
 
         }
     }

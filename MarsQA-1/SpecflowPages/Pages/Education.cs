@@ -38,30 +38,25 @@ namespace MarsQA_1.SpecFlowPages.Pages
             element1.SelectByValue(Title);
             AddDegreeTextBox.SendKeys(Degree);
             SelectElement element2 = new SelectElement(DropDown_Year);
-            element2.SelectByValue(Year);
+            element2.SelectByValue(Year.ToString());
             AddEducationButton.Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            
 
         }
-        public string GetCountry(IWebDriver driver)
+        public void VerifyEducationAdded(string Degree)
         {
-            return ActualCountry.Text;
-        }
-        public string GetUniversity(IWebDriver driver)
-        {
-            return ActualUniversity.Text;
-        }
-        public string GetTitle(IWebDriver driver)
-        {
-            return ActualTitle.Text;
-        }
-        public string GetDegree(IWebDriver driver)
-        {
-            return ActualDegree.Text;
-        }
-        public string GetYear(IWebDriver driver)
-        {
-            return ActualYear.Text;
+            bool EducationRecord = false;
+            IWebElement tableElement = Driver.driver.FindElement(By.XPath("(//table[@class='ui fixed table'])[3]"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tbody"));
+            foreach (IWebElement row in tableRow)
+            {
+                if (row.Text.Contains(Degree))
+                {
+                    EducationRecord = true;
+                    Console.WriteLine("Education detail added");
+                    break;
+                }
+            }
         }
     }
 }
